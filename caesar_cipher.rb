@@ -10,20 +10,8 @@ def convert_to_ascii(arr)
   end
 end
 
-def caesar_cipher(msg, num)
-
-  # Split msg into an array
-  characters = msg.split("")
-
-  # If character is a letter
-  # Then convert character to ASCII using .ord
-  # Else return character
-
-  # If element is a number
-  # Then add num to converted character
-  # And convert back to character using .chr
-  # Else return character
-  encrypted_characters = convert_to_ascii(characters).map do |char|
+def encrypt_characters(arr, num)
+  arr.map do |char|
     if char.is_a?(Integer)
       # Loop from z to a
       if ((char + num) > 90) && (char.chr == char.chr.upcase) ||
@@ -38,6 +26,23 @@ def caesar_cipher(msg, num)
       char
     end
   end
+end
+
+def caesar_cipher(msg, num)
+
+  # Split msg into an array
+  characters = msg.split("")
+
+  # If character is a letter
+  # Then convert character to ASCII using .ord
+  # Else return character
+  ascii_converted_characters = convert_to_ascii(characters)
+
+  # If element is a number
+  # Then add num to converted character
+  # And convert back to character using .chr
+  # Else return character
+  encrypted_characters = encrypt_characters(ascii_converted_characters, num)
   
   # Join characters into a string
   encrypted_characters.join
