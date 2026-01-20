@@ -29,6 +29,8 @@ def caesar_cipher(msg, num)
   end
   
   # Join characters into a string
+  encrypted_characters.join
+
   # TODO: Loop from z to a
 end
 
