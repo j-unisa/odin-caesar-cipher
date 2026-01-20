@@ -6,7 +6,7 @@ def caesar_cipher(msg, num)
 
   # If character is a letter
   # Then convert character to ASCII using .ord
-  # Else continue
+  # Else return character
   ascii__converted_characters = characters.map do |char|
     if alpha.include?(char)
       char.ord
@@ -18,14 +18,16 @@ def caesar_cipher(msg, num)
   # If element is a number
   # Then add num to converted character
   # And convert back to character using .chr
+  # Else return character
   encrypted_characters = ascii__converted_characters.map do |char|
     if char.is_a?(Integer)
       char += num
+      char.chr
     else
       char
     end
   end
-    
+  
   # Join characters into a string
   # TODO: Loop from z to a
 end
