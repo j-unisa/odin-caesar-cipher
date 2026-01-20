@@ -21,8 +21,15 @@ def caesar_cipher(msg, num)
   # Else return character
   encrypted_characters = ascii__converted_characters.map do |char|
     if char.is_a?(Integer)
-      char += num
-      char.chr
+      # Loop from z to a
+      if ((char + num) > 90) && (char.chr == char.chr.upcase) ||
+        ((char + num > 122)) && (char.chr == char.chr.downcase)
+        char -= 26 - num
+        char.chr
+      else
+        char += num
+        char.chr
+      end
     else
       char
     end
@@ -30,8 +37,6 @@ def caesar_cipher(msg, num)
   
   # Join characters into a string
   encrypted_characters.join
-
-  # TODO: Loop from z to a
 end
 
-caesar_cipher("Hello world!", 1)
+caesar_cipher("Hello world Zz!", 1)
